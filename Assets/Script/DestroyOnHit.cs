@@ -18,11 +18,11 @@ public class DestroyOnHit : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(this);
+        //Destroy(this);
         if (other.tag != "Player")
         {
-            
-            Destroy(gameObject, 10);
+            Destroy(gameObject);
+            Destroy(other.gameObject);
         }
     }
 }
