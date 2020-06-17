@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class DestroyOnHit : MonoBehaviour
@@ -13,7 +14,7 @@ public class DestroyOnHit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Destroy(gameObject, 1);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -21,8 +22,9 @@ public class DestroyOnHit : MonoBehaviour
         //Destroy(this);
         if (other.tag != "Player")
         {
-            Destroy(gameObject);
             Destroy(other.gameObject);
+            Destroy(gameObject);
         }
+        
     }
 }

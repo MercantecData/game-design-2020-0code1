@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Shoot : MonoBehaviour
 {
     public GameObject bulletPrefab;
@@ -20,7 +21,9 @@ public class Shoot : MonoBehaviour
             
             GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
             Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
-            rigidbody.velocity = bullet.transform.right * 10;
+            rigidbody.velocity = bullet.transform.right * 20;
+
+            GameController.instance.setBullets(GameController.instance.bullets - 1);
         }
     }
 
