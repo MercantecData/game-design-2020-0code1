@@ -5,12 +5,6 @@ using UnityEngine;
 
 public class DestroyOnHit : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -20,11 +14,22 @@ public class DestroyOnHit : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         //Destroy(this);
-        if (other.tag != "Player")
+        if (other.CompareTag("Enemy"))
         {
             Destroy(other.gameObject);
             Destroy(gameObject);
+            GameController.instance.setWinCondition("YOU WIN");
+
         }
-        
+        if (other.CompareTag("Environment"))
+        {
+            Destroy(gameObject);
+        }
+        if (other.CompareTag("Player"))
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+            GameController.instance.setWinCondition("YOU LOSE");
+        }
     }
 }

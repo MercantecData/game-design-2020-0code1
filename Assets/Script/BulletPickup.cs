@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class BulletPickup : MonoBehaviour
 {
-    public void OnTriggerEnter2D()
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        GameController.instance.setBullets(GameController.instance.bullets + 1);
-        Destroy(gameObject);
+        if (other.CompareTag("Player"))
+        {
+            GameController.instance.setBullets(GameController.instance.bullets + 10);
+            Destroy(gameObject);
+        }
+        
     }
 }

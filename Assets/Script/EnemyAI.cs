@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Security.Cryptography;
 using UnityEditor.Android;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
@@ -17,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     public LayerMask mask;
     public float range = 15;
     private Vector3 currentTarget;
+
     
     // Start is called before the first frame update
     void Start()
@@ -59,28 +61,31 @@ public class EnemyAI : MonoBehaviour
 
             if (targetAquired())
             {
-                
-                currentState = "Attack";
+                currentState = "Move";
             }
         }
-        else if (currentState == "Attack")
+        else 
+        if (currentState == "Move")
         {
-            Vector2 AttakeMove = Vector2.MoveTowards(transform.position, player.position, Time.deltaTime * speed);
-
-            transform.position = AttakeMove;
-
             var Target = player.transform.position;
             var timeToMousePosition = Target - transform.position;
-
             transform.up = timeToMousePosition;
 
+            if (Vector2.Distance(player.transform.position, transform.position) > 10f)
+            {
+                Vector2 moveToplayer = Vector2.MoveTowards(transform.position, player.position, Time.deltaTime * speed);
+                transform.position = moveToplayer;
+
+            }
+
+            
             if (!targetAquired())
             {
                 currentState = "Patrol";
             }
         }
         
-
+        
         bool targetAquired()
         {
             GameObject targetGO = GameObject.FindGameObjectWithTag("Player");

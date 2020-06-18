@@ -6,11 +6,6 @@ using UnityEngine;
 public class Shoot : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -21,7 +16,7 @@ public class Shoot : MonoBehaviour
             
             GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
             Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
-            rigidbody.velocity = bullet.transform.right * 20;
+            rigidbody.velocity = bullet.transform.right * 30;
 
             GameController.instance.setBullets(GameController.instance.bullets - 1);
         }
