@@ -6,7 +6,8 @@ public class EnemyShoot : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform player;
-
+    public GameObject enemy;
+    
     #region property for update version
     //private float nextActionTime = 0.3f;
     //public float period = 0.0f;
@@ -14,7 +15,7 @@ public class EnemyShoot : MonoBehaviour
     #endregion
     void Start()
     {
-        InvokeRepeating("Shoot", 0.1f, 0.6f);
+        InvokeRepeating("Shoot", 0.1f, 1);
     }
 
 
@@ -39,10 +40,18 @@ public class EnemyShoot : MonoBehaviour
     {
         if (Vector2.Distance(player.transform.position, transform.position) < 10f)
         {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-            Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
-            rigidbody.velocity = bullet.transform.right * 30;
+            enemy.GetComponent<Animator>().SetBool("Enemy.Shoot", true);
+            StartCoroutine(Bullet(0.1f));
+            
         }
         
+    }
+
+    IEnumerator Bullet(float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
+        rigidbody.velocity = bullet.transform.right * 30;
     }
 }

@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     public LayerMask mask;
     public float range = 15;
     private Vector3 currentTarget;
+    public Animator animator;
 
     
     // Start is called before the first frame update
@@ -75,9 +76,9 @@ public class EnemyAI : MonoBehaviour
             {
                 Vector2 moveToplayer = Vector2.MoveTowards(transform.position, player.position, Time.deltaTime * speed);
                 transform.position = moveToplayer;
+                animator.SetBool("Enemy.Shoot", false);
 
             }
-
             
             if (!targetAquired())
             {
