@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,19 +12,31 @@ public class GameController : MonoBehaviour
     ///trying to do an instantiate , but without success, since the object have to be
     ///fetch under  the canvas child. still havent found the solution yet, but might be good to try later
     //public GameObject winLostPrefab;
-
+    public GameObject Canvas;
+    public Text condition;
+    public Image background;
+    public Text Life;
+    
     [SerializeField]
     private Text ui_test;
 
     public Text Ui_test { get => ui_test; set => ui_test = value;}
 
-    public Text ui_LostText;
+    //public Text ui_LostText;
 
     public void Awake()
     {
         instance = this;
     }
     public int bullets = 10;
+
+    public int life = 3;
+
+    public void setLife (int life)
+    {
+        this.life = life;
+        Life.text = "Health : " + life.ToString();
+    }
 
     public void setBullets(int bullets)
     {
@@ -32,7 +45,15 @@ public class GameController : MonoBehaviour
     }
     public void setWinCondition(string state)
     {
-        ui_LostText.text = state;
-        
+        Text textObject = Instantiate(condition);
+        Image backG = Instantiate(background);
+        backG.transform.parent = Canvas.transform;
+        backG.transform.position = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
+        backG.GetComponent<Image>().color = new Color32(0, 0, 0,200);
+        textObject.transform.parent = Canvas.transform;
+        textObject.transform.position = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
+        textObject.text = state;
     }
+
+
 }

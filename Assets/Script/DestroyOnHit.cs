@@ -27,9 +27,18 @@ public class DestroyOnHit : MonoBehaviour
         }
         if (other.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-            GameController.instance.setWinCondition("YOU LOSE");
+            if (GameController.instance.life != 0)
+            {
+                GameController.instance.setLife(GameController.instance.life - 1);
+                Destroy(gameObject);
+            }
+            else
+            {
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+                GameController.instance.setWinCondition("YOU LOSE");
+            }
+           
         }
     }
 }
