@@ -19,7 +19,8 @@ public class EnemyAI : MonoBehaviour
     public float range = 15;
     private Vector3 currentTarget;
     public Animator animator;
-
+   
+    
     
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,6 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (currentState == "Patrol")
         {
             Vector2 nextposition = Vector2.MoveTowards(transform.position, nextwaypoint.position, Time.deltaTime * speed);

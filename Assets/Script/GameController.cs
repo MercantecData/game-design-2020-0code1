@@ -14,9 +14,9 @@ public class GameController : MonoBehaviour
     //public GameObject winLostPrefab;
     public GameObject Canvas;
     public Text condition;
-    public Image background;
+    public GameObject background;
     public Text Life;
-    
+    public Text kill;
     [SerializeField]
     private Text ui_test;
 
@@ -32,6 +32,8 @@ public class GameController : MonoBehaviour
 
     public int life = 3;
 
+    public int kills = 0;
+
     public void setLife (int life)
     {
         this.life = life;
@@ -43,16 +45,31 @@ public class GameController : MonoBehaviour
         this.bullets = bullets;
         ui_test.text =   "Bullets : "+ bullets.ToString();
     }
+
+    public void setEnemyKill(int kills)
+    {
+        this.kills = kills;
+        kill.text = "Killed "+ kills.ToString() + ": 3";
+        if (kills == 3)
+        {
+            setWinCondition("YOU WIN");
+        }
+    }
     public void setWinCondition(string state)
     {
-        Text textObject = Instantiate(condition);
-        Image backG = Instantiate(background);
-        backG.transform.parent = Canvas.transform;
-        backG.transform.position = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
-        backG.GetComponent<Image>().color = new Color32(0, 0, 0,200);
-        textObject.transform.parent = Canvas.transform;
-        textObject.transform.position = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
-        textObject.text = state;
+        /// Instantiat af win and lose + background object, havde problem med scaling + dårlig practice af object
+        //Text textObject = Instantiate(condition);
+        //Image backG = Instantiate(background);
+        //backG.transform.parent = Canvas.transform;
+        //backG.transform.position = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
+        //backG.GetComponent<Image>().color = new Color32(0, 0, 0,200);
+        //textObject.transform.parent = Canvas.transform;
+        //textObject.transform.position = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
+
+        /// gøre det samme men med in setactive true/false
+        background.SetActive(true);
+        condition.text = state;
+        
     }
 
 

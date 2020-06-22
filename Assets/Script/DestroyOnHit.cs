@@ -18,8 +18,8 @@ public class DestroyOnHit : MonoBehaviour
         {
             Destroy(other.gameObject);
             Destroy(gameObject);
-            GameController.instance.setWinCondition("YOU WIN");
-
+            //GameController.instance.setWinCondition("YOU WIN");
+            GameController.instance.setEnemyKill(GameController.instance.kills + 1);
         }
         if (other.CompareTag("Environment"))
         {
