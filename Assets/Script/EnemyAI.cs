@@ -85,7 +85,7 @@ public class EnemyAI : MonoBehaviour
             }
         }
         
-        
+
         bool targetAquired()
         {
             GameObject targetGO = GameObject.FindGameObjectWithTag("Player");

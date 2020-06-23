@@ -34,18 +34,31 @@ public class GameController : MonoBehaviour
 
     public int kills = 0;
 
+
+    /// <summary>
+    /// Player Health bar
+    /// </summary>
+    /// <param name="life"></param>
     public void setLife (int life)
     {
         this.life = life;
         Life.text = "Health : " + life.ToString();
     }
 
+    /// <summary>
+    /// Bullet Countdown
+    /// </summary>
+    /// <param name="bullets"></param>
     public void setBullets(int bullets)
     {
         this.bullets = bullets;
         ui_test.text =   "Bullets : "+ bullets.ToString();
     }
 
+    /// <summary>
+    /// Enemy Kills countdown
+    /// </summary>
+    /// <param name="kills"></param>
     public void setEnemyKill(int kills)
     {
         this.kills = kills;
@@ -55,9 +68,15 @@ public class GameController : MonoBehaviour
             setWinCondition("YOU WIN");
         }
     }
+
+    /// <summary>
+    /// Ui win lost Text
+    /// </summary>
+    /// <param name="state"></param>
     public void setWinCondition(string state)
     {
         /// Instantiat af win and lose + background object, havde problem med scaling + dårlig practice af object
+        #region Instantiat object
         //Text textObject = Instantiate(condition);
         //Image backG = Instantiate(background);
         //backG.transform.parent = Canvas.transform;
@@ -65,9 +84,18 @@ public class GameController : MonoBehaviour
         //backG.GetComponent<Image>().color = new Color32(0, 0, 0,200);
         //textObject.transform.parent = Canvas.transform;
         //textObject.transform.position = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
+        #endregion
 
         /// gøre det samme men med in setactive true/false
         background.SetActive(true);
+        if (state == "YOU LOSE")
+        {
+            condition.color = new Color32(255, 0, 0, 255);
+        }
+        else
+        {
+            condition.color = new Color32(0, 255, 0, 255);
+        }
         condition.text = state;
         
     }
