@@ -8,7 +8,7 @@ public class BulletPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameController.instance.setBullets(GameController.instance.bullets + 10);
+            GameController.instance.setBullets(GameController.instance.bullets + 5);
             Destroy(gameObject);
         }
         

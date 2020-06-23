@@ -19,7 +19,6 @@ public class EnemyAI : MonoBehaviour
     public float range = 15;
     private Vector3 currentTarget;
     public Animator animator;
-   
     
     
     // Start is called before the first frame update
