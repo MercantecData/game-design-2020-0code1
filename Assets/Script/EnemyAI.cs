@@ -30,13 +30,12 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animator.SetFloat("Movement", Vector2.Distance(player.transform.position, transform.position));
         if (currentState == "Patrol")
         {
             Vector2 nextposition = Vector2.MoveTowards(transform.position, nextwaypoint.position, Time.deltaTime * speed);
 
             transform.position = nextposition;
-
-           
 
             if (transform.position == waypoint1.position || transform.position == waypoint2.position )
             {
@@ -76,6 +75,7 @@ public class EnemyAI : MonoBehaviour
                 Vector2 moveToplayer = Vector2.MoveTowards(transform.position, player.position, Time.deltaTime * speed);
                 transform.position = moveToplayer;
                 animator.SetBool("Enemy.Shoot", false);
+                
 
             }
             
