@@ -41,8 +41,7 @@ public class Movement : MonoBehaviour
 
         /// rotation af object in 2D  we must use z, recommanded on eulerAngles
         /// missing a kind of loop for the mouse event ! 
-
-        #region selvcode
+        #region selvcode virker men ikke god practice
         //if (Input.mousePosition.x > position.x)
         //{
         //    rotate.z = 90;

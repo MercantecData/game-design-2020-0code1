@@ -17,4 +17,7 @@ public class Smooth : MonoBehaviour
         var target = Vector3.SmoothDamp(transform.position, playerPosition, ref veolicty, 0.5f);
         transform.position = target;
     }
+  
 }
+
+

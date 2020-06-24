@@ -15,10 +15,12 @@ public class GameController : MonoBehaviour
     public GameObject Canvas;
     public Text condition;
     public GameObject background;
-    public Text Life;
+    //public Text Life;
     public Text kill;
+    public Slider slider;
     [SerializeField]
     private Text ui_test;
+
 
     public Text Ui_test { get => ui_test; set => ui_test = value;}
 
@@ -34,6 +36,13 @@ public class GameController : MonoBehaviour
 
     public int kills = 0;
 
+    /// <summary>
+    /// overføre fra scene til scene
+    /// </summary>
+    public void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     /// <summary>
     /// Player Health bar
@@ -42,7 +51,8 @@ public class GameController : MonoBehaviour
     public void setLife (int life)
     {
         this.life = life;
-        Life.text = "Health : " + life.ToString();
+        //Life.text = "Health : " + life.ToString();
+        slider.value = life;
     }
 
     /// <summary>
