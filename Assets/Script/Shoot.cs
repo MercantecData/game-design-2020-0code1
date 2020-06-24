@@ -7,12 +7,12 @@ public class Shoot : MonoBehaviour
 {
     public GameObject bulletPrefab;
 
-    private AudioSource AudioSource;
+   // private AudioSource audioSource;
 
     private void Start()
     {
         // fo fat i children object  med en AudioSource
-        AudioSource = GetComponentInChildren<AudioSource>();
+        //audioSource = GetComponentInChildren<AudioSource>();
 
     }
 
@@ -28,7 +28,8 @@ public class Shoot : MonoBehaviour
                 Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
                 rigidbody.velocity = bullet.transform.right * 30;
                 GameController.instance.setBullets(GameController.instance.bullets - 1);
-                AudioSource.Play();            
+                //var clip = GetComponentInChildren<AudioSource>().clip;
+                //AudioSource.PlayClipAtPoint(audioSource.clip, Vector2.zero);
             
             }
         }
