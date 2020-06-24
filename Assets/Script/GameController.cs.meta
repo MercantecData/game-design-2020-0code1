@@ -3,7 +3,16 @@ guid: 8db513fa017cd114b98ddef684593803
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Canvas: {instanceID: 0}
+  - condition: {instanceID: 0}
+  - background: {instanceID: 0}
+  - kill: {instanceID: 0}
+  - slider: {instanceID: 0}
+  - ui_test: {instanceID: 0}
+  - clip_lose: {fileID: 8300000, guid: 7f02baf9ae301f24d9f4a8f5d4f1feaa, type: 3}
+  - clip_win: {fileID: 8300000, guid: e3362000d27399941bbe6e7597df97da, type: 3}
+  - bg: {fileID: 5418712767766718655, guid: 926d56044d3fc664abb3dd142e2cb2a1, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

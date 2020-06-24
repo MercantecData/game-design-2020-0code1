@@ -20,7 +20,15 @@ public class GameController : MonoBehaviour
     public Slider slider;
     [SerializeField]
     private Text ui_test;
+    [SerializeField]
+    private AudioClip clip_lose;
+    [SerializeField]
+    private AudioClip clip_win;
+    [SerializeField]
+    private AudioSource bg;
 
+    private AudioSource musicSource;
+    
 
     public Text Ui_test { get => ui_test; set => ui_test = value;}
 
@@ -76,6 +84,7 @@ public class GameController : MonoBehaviour
         if (kills == 3)
         {
             setWinCondition("YOU WIN");
+            
         }
     }
 
@@ -97,13 +106,22 @@ public class GameController : MonoBehaviour
         #endregion
 
         /// gøre det samme men med in setactive true/false
+        musicSource = gameObject.AddComponent<AudioSource>();
         background.SetActive(true);
+        bg.Stop();
         if (state == "YOU LOSE")
         {
             condition.color = new Color32(255, 0, 0, 255);
+            musicSource.clip = clip_lose;
+            musicSource.loop = true;
+            musicSource.Play();
+            
         }
         else
         {
+            musicSource.clip = clip_win;
+            musicSource.loop = true;
+            musicSource.Play();
             condition.color = new Color32(0, 255, 0, 255);
         }
         condition.text = state;
