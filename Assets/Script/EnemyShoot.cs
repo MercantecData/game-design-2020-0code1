@@ -53,5 +53,6 @@ public class EnemyShoot : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
         Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
         rigidbody.velocity = bullet.transform.right * 30;
+        SoundController.instance.startShoot();
     }
 }

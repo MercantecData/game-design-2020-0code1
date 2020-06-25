@@ -7,6 +7,7 @@ public class Shoot : MonoBehaviour
 {
     public GameObject bulletPrefab;
 
+    
    // private AudioSource audioSource;
 
     private void Start()
@@ -28,9 +29,14 @@ public class Shoot : MonoBehaviour
                 Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
                 rigidbody.velocity = bullet.transform.right * 30;
                 GameController.instance.setBullets(GameController.instance.bullets - 1);
+                #region  school example for 3D lyde 
                 //var clip = GetComponentInChildren<AudioSource>().clip;
                 //AudioSource.PlayClipAtPoint(audioSource.clip, Vector2.zero);
-            
+                #endregion
+                //SoundController test = new SoundController();
+                //test.startShoot();
+
+                SoundController.instance.startShoot();
             }
         }
     }

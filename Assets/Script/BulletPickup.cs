@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class BulletPickup : MonoBehaviour
 {
-    public AudioClip Clip;
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -16,8 +15,9 @@ public class BulletPickup : MonoBehaviour
             Destroy(gameObject);
 
             // play even on destroy object. wish instentiat the sound object and destroy it after
-            var clip = GetComponentInChildren<AudioSource>().clip;
-            AudioSource.PlayClipAtPoint(clip, Vector2.zero);
+            //var clip = GetComponentInChildren<AudioSource>().clip;
+            //AudioSource.PlayClipAtPoint(clip, Vector2.zero);
+            SoundController.instance.Pickup();
         }
         
     }
